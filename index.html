@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bryza — A Living Ocean Observatory. Descend through tides, currents, coral cities, and bioluminescent depths.">
+  <meta name="theme-color" content="#02070D">
+  <meta property="og:title" content="Bryza — Living Ocean Observatory">
+  <meta property="og:description" content="An expedition into the hidden intelligence of the oceans.">
+  <meta property="og:type" content="website">
+  <title>Bryza — Living Ocean Observatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to ocean journey</a>
+
+  <!-- Floating Shell Navigation -->
+  <button class="shell-nav-trigger" id="shellTrigger" aria-label="Open ocean navigation" aria-expanded="false" aria-controls="oceanNav">
+    <svg class="shell-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M32 8 C18 8 8 20 8 32 C8 44 18 56 32 56 C46 56 56 44 56 32 C56 20 46 8 32 8 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M32 12 C22 12 14 22 14 32 C14 42 22 50 32 50 C42 50 50 42 50 32 C50 22 42 12 32 12 Z" fill="currentColor" opacity="0.3"/>
+      <path d="M32 16 Q24 28 32 40 Q40 28 32 16" fill="currentColor" opacity="0.6"/>
+    </svg>
+  </button>
+
+  <nav class="ocean-nav" id="oceanNav" aria-label="Ocean regions" hidden>
+    <div class="ocean-nav__ring">
+      <a href="#currents" class="ocean-nav__item" data-region="currents">Currents</a>
+      <a href="#reefs" class="ocean-nav__item" data-region="reefs">Reefs</a>
+      <a href="#migration" class="ocean-nav__item" data-region="migration">Migration</a>
+      <a href="#abyss" class="ocean-nav__item" data-region="abyss">Abyss</a>
+      <a href="#light-city" class="ocean-nav__item" data-region="light-city">Light City</a>
+      <a href="#contact" class="ocean-nav__item" data-region="contact">Contact</a>
+    </div>
+    <button class="ocean-nav__close" id="navClose" aria-label="Close navigation">&times;</button>
+  </nav>
+
+  <!-- Master Canvas Layer -->
+  <canvas id="oceanCanvas" aria-hidden="true"></canvas>
+  <div class="depth-overlay" id="depthOverlay" aria-hidden="true"></div>
+
+  <main id="main-content">
+    <!-- SECTION 1: THE SURFACE OF THE SEA -->
+    <section class="ocean-section section-surface" id="surface" data-depth="0" aria-label="The Surface of the Sea">
+      <div class="section-inner">
+        <div class="surface-horizon"></div>
+        <div class="surface-ripples"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE CURRENT FIELDS -->
+    <section class="ocean-section section-currents" id="currents" data-depth="1" aria-label="The Current Fields">
+      <div class="section-inner">
+        <h2 class="section-title visually-hidden">The Current Fields</h2>
+        <div class="current-streams" id="currentStreams">
+          <article class="current-item" tabindex="0">
+            <span class="current-label">Story</span>
+            <p class="current-text">The Gulf Stream carries warmth across an entire hemisphere — a river within the sea, older than any civilization.</p>
+          </article>
+          <article class="current-item" tabindex="0">
+            <span class="current-label">Discovery</span>
+            <p class="current-text">Thermohaline circulation connects every ocean basin in a single, breathing cycle that takes a thousand years to complete.</p>
+          </article>
+          <article class="current-item" tabindex="0">
+            <span class="current-label">Observation</span>
+            <p class="current-text">At 200 meters depth, the Ekman spiral turns surface winds into a corkscrew of invisible force.</p>
+          </article>
+          <article class="current-item" tabindex="0">
+            <span class="current-label">Knowledge</span>
+            <p class="current-text">Langmuir cells create parallel streaks on the surface — the ocean writing its own geometry.</p>
+          </article>
+          <article class="current-item" tabindex="0">
+            <span class="current-label">Story</span>
+            <p class="current-text">Drifting kelp rafts have carried species between continents for millennia, long before humans crossed oceans.</p>
+          </article>
+          <article class="current-item" tabindex="0">
+            <span class="current-label">Discovery</span>
+            <p class="current-text">Deep currents move slower than a heartbeat, yet they regulate the planet's entire climate system.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE CORAL CITIES -->
+    <section class="ocean-section section-coral" id="reefs" data-depth="2" aria-label="The Coral Cities">
+      <div class="section-inner">
+        <h2 class="section-title">Coral Cities</h2>
+        <div class="coral-ecosystem">
+          <article class="coral-formation" data-region="reef-worlds">
+            <div class="coral-visual coral-visual--branching"></div>
+            <h3>Reef Worlds</h3>
+            <p>Living architecture built grain by grain over centuries. A single reef can shelter a quarter of all marine species.</p>
+          </article>
+          <article class="coral-formation" data-region="hidden-species">
+            <div class="coral-visual coral-visual--plate"></div>
+            <h3>Hidden Species</h3>
+            <p>Within coral polyps, zooxanthellae perform photosynthesis — a symbiosis so ancient it predates flowers.</p>
+          </article>
+          <article class="coral-formation" data-region="ocean-histories">
+            <div class="coral-visual coral-visual--fan"></div>
+            <h3>Ocean Histories</h3>
+            <p>Corals record climate in their skeletons. Each band is a year of temperature, storm, and survival.</p>
+          </article>
+          <article class="coral-formation" data-region="ecosystem">
+            <div class="coral-visual coral-visual--mound"></div>
+            <h3>Ecosystem Narratives</h3>
+            <p>From parrotfish to sea urchins, every creature plays a role in the reef's continuous rebuilding.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE MIGRATION PATHWAYS -->
+    <section class="ocean-section section-migration" id="migration" data-depth="3" aria-label="The Migration Pathways">
+      <div class="section-inner">
+        <h2 class="section-title">Migration Pathways</h2>
+        <p class="section-subtitle">A living network of movement, survival, and connection</p>
+        <div class="migration-map" id="migrationMap">
+          <canvas id="migrationCanvas" aria-hidden="true"></canvas>
+          <div class="migration-stories">
+            <article class="migration-story" data-species="whale">
+              <h3>Great Whales</h3>
+              <p>Humpbacks navigate 5,000 miles using magnetic fields and star positions memorized across generations.</p>
+            </article>
+            <article class="migration-story" data-species="turtle">
+              <h3>Sea Turtles</h3>
+              <p>Leatherbacks return to the exact beach where they hatched, guided by Earth's magnetic signature.</p>
+            </article>
+            <article class="migration-story" data-species="ray">
+              <h3>Manta Rays</h3>
+              <p>Oceanic mantas traverse open water in formations that mirror the currents they follow.</p>
+            </article>
+            <article class="migration-story" data-species="fish">
+              <h3>Fish Schools</h3>
+              <p>Millions move as one organism — each fish responding to its seven nearest neighbors in perfect synchrony.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: THE FOREST OF KELP -->
+    <section class="ocean-section section-kelp" id="kelp" data-depth="4" aria-label="The Forest of Kelp">
+      <div class="section-inner">
+        <h2 class="section-title">Forest of Kelp</h2>
+        <div class="kelp-forest" id="kelpForest">
+          <div class="kelp-organism" tabindex="0">
+            <span class="organism-glow"></span>
+            <p>Kelp grows up to two feet per day — among the fastest organisms on Earth.</p>
+          </div>
+          <div class="kelp-organism" tabindex="0">
+            <span class="organism-glow"></span>
+            <p>Sea otters anchor themselves in kelp while sleeping, wrapped in the forest's embrace.</p>
+          </div>
+          <div class="kelp-organism" tabindex="0">
+            <span class="organism-glow"></span>
+            <p>Filtered sunlight creates cathedral light shafts through the canopy above.</p>
+          </div>
+          <div class="kelp-organism" tabindex="0">
+            <span class="organism-glow"></span>
+            <p>Holdfasts grip rock with a strength that withstands the fiercest Pacific storms.</p>
+          </div>
+        </div>
+        <canvas id="kelpCanvas" class="kelp-canvas" aria-hidden="true"></canvas>
+      </div>
+    </section>
+
+    <!-- SECTION 6: THE MIDNIGHT ZONE -->
+    <section class="ocean-section section-midnight" id="midnight" data-depth="5" aria-label="The Midnight Zone">
+      <div class="section-inner">
+        <h2 class="section-title">The Midnight Zone</h2>
+        <div class="biolum-grid" id="biolumGrid">
+          <article class="biolum-creature" tabindex="0">
+            <div class="creature-glow creature-glow--jelly"></div>
+            <h3>Comb Jelly</h3>
+            <p>Rainbow cilia refract light into living prisms in absolute darkness.</p>
+          </article>
+          <article class="biolum-creature" tabindex="0">
+            <div class="creature-glow creature-glow--angler"></div>
+            <h3>Anglerfish</h3>
+            <p>A bacterial lantern lures prey into jaws that can swallow creatures twice its size.</p>
+          </article>
+          <article class="biolum-creature" tabindex="0">
+            <div class="creature-glow creature-glow--squid"></div>
+            <h3>Firefly Squid</h3>
+            <p>Thousands synchronize their light displays in bays of Japan each spring.</p>
+          </article>
+          <article class="biolum-creature" tabindex="0">
+            <div class="creature-glow creature-glow--bacteria"></div>
+            <h3>Marine Bacteria</h3>
+            <p>Bioluminescent bacteria communicate through chemical signals older than vision itself.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: THE ABYSSAL ARCHIVE -->
+    <section class="ocean-section section-archive" id="abyss" data-depth="6" aria-label="The Abyssal Archive">
+      <div class="section-inner">
+        <h2 class="section-title">The Abyssal Archive</h2>
+        <p class="section-subtitle">Ancient artifacts floating in timeless silence</p>
+        <div class="archive-chamber" id="archiveChamber">
+          <article class="archive-artifact" tabindex="0" data-artifact="amphora">
+            <div class="artifact-shape artifact-shape--vessel"></div>
+            <h3>Amphora Fragment</h3>
+            <p>Trade routes of the Bronze Age ran beneath waves that still hold their cargo.</p>
+          </article>
+          <article class="archive-artifact" tabindex="0" data-artifact="compass">
+            <div class="artifact-shape artifact-shape--compass"></div>
+            <h3>Navigator's Compass</h3>
+            <p>Lost in a storm off the Azores, its needle still points toward magnetic north.</p>
+          </article>
+          <article class="archive-artifact" tabindex="0" data-artifact="logbook">
+            <div class="artifact-shape artifact-shape--book"></div>
+            <h3>Captain's Log</h3>
+            <p>Waterlogged pages describe bioluminescent seas no modern sailor has witnessed.</p>
+          </article>
+          <article class="archive-artifact" tabindex="0" data-artifact="anchor">
+            <div class="artifact-shape artifact-shape--anchor"></div>
+            <h3>Iron Anchor</h3>
+            <p>Encrusted with deep-sea corals, it has become part of the seafloor ecosystem.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: THE WHALE CHAMBER -->
+    <section class="ocean-section section-whale" id="whale-chamber" data-depth="7" aria-label="The Whale Chamber">
+      <div class="section-inner">
+        <h2 class="section-title">The Whale Chamber</h2>
+        <div class="whale-sanctuary" id="whaleSanctuary">
+          <canvas id="whaleCanvas" aria-hidden="true"></canvas>
+          <div class="whale-song-waves" id="whaleSongWaves"></div>
+          <div class="whale-info">
+            <article class="song-reveal" tabindex="0">
+              <h3>Songs of the Deep</h3>
+              <p>Blue whale calls travel thousands of miles — the loudest biological sound on the planet.</p>
+            </article>
+            <article class="song-reveal" tabindex="0">
+              <h3>Echoes Across Basins</h3>
+              <p>The SOFAR channel acts as an underwater sound waveguide, carrying whale song across entire oceans.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: THE CITY OF LIGHT BELOW -->
+    <section class="ocean-section section-light-city" id="light-city" data-depth="8" aria-label="The City of Light Below">
+      <div class="section-inner">
+        <h2 class="section-title">City of Light Below</h2>
+        <p class="section-subtitle">An impossible civilization created entirely from marine light</p>
+        <div class="light-metropolis" id="lightMetropolis">
+          <div class="light-structure" style="--delay: 0s"></div>
+          <div class="light-structure" style="--delay: 0.5s"></div>
+          <div class="light-structure" style="--delay: 1s"></div>
+          <div class="light-structure" style="--delay: 1.5s"></div>
+          <div class="light-structure" style="--delay: 2s"></div>
+          <div class="light-structure" style="--delay: 2.5s"></div>
+          <div class="light-district">
+            <article class="light-node" tabindex="0">
+              <h3>Luminous Spires</h3>
+              <p>Structures grown from bioluminescent bacteria colonies, pulsing in rhythmic harmony.</p>
+            </article>
+            <article class="light-node" tabindex="0">
+              <h3>Photophore Avenues</h3>
+              <p>Pathways lit by symbiotic organisms that respond to movement and sound.</p>
+            </article>
+            <article class="light-node" tabindex="0">
+              <h3>The Glowing Deep</h3>
+              <p>A metropolis that has never seen sunlight, yet thrives in radiant abundance.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: THE HEART OF THE OCEAN -->
+    <section class="ocean-section section-heart" id="heart" data-depth="9" aria-label="The Heart of the Ocean">
+      <div class="section-inner">
+        <div class="heart-chamber" id="heartChamber">
+          <div class="tidal-core" id="tidalCore">
+            <div class="core-sphere"></div>
+            <div class="core-rings">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <h2 class="heart-title">The Deepest Worlds Are The Least Seen</h2>
+          <div class="heart-core-label">A luminous tidal core</div>
+          <button class="descend-btn" id="descendBtn" aria-label="Descend into Bryza">
+            DESCEND INTO BRYZA
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT (accessible via shell nav) -->
+    <section class="ocean-section section-contact" id="contact" data-depth="10" aria-label="Contact">
+      <div class="section-inner">
+        <h2 class="section-title">Reach the Observatory</h2>
+        <p class="contact-text">Send a signal through the depths. The ocean listens.</p>
+        <form class="contact-form" id="contactForm" novalidate>
+          <label for="contactName">Your name</label>
+          <input type="text" id="contactName" name="name" autocomplete="name" required>
+          <label for="contactEmail">Email</label>
+          <input type="email" id="contactEmail" name="email" autocomplete="email" required>
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" rows="4" required></textarea>
+          <button type="submit" class="contact-submit">Send Signal</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ocean-footer" role="contentinfo">
+    <p>&copy; Bryza — Living Ocean Observatory</p>
+  </footer>
+
+  <script src="js/ocean-engine.js" defer></script>
+  <script src="js/sections.js" defer></script>
+  <script src="js/navigation.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
